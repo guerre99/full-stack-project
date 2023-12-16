@@ -6,7 +6,7 @@ const { body } = require('express-validator')
 
 const userSchema = new mongoose.Schema({
   username: { type: String, required: true, unique: true },
-  username: { type: String, required: true, unique: true },
+  email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   vehicles: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Vehicle' }],
   // dailyNotification: { type: Boolean, default: false},
