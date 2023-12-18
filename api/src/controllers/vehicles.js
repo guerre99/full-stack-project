@@ -1,9 +1,7 @@
 const { Vehicle } = require('../models/vehicle')
 
 const getAll = async (req, res) => {
-  const vehicles = await Vehicle.find({ rider: req.user._id }).populate(
-    'visits'
-  )
+  const vehicles = await Vehicle.find({ rider: req.user._id })
   res.json(vehicles)
 }
 
@@ -11,17 +9,19 @@ const getOne = async (req, res) => {
   const { vehicleId } = req.params
   const vehicle = await Vehicle.findById(vehicleId).populate('visits')
   if (!vehicle) {
-    return res.status(404).json({ message: 'Vehicle no encontrado' })
+    return res.status(404).json({ message: 'Vehiculo no encontrado' })
   }
   res.json(vehicle)
 }
 
 const create = async (req, res) => {
-  const { date, visits } = req.body
+  const { model, year, engine, vehicleImage } = req.body
+  const { type, power } = engine
   const newVehicle = await Vehicle.create({
-    date,
-    visits,
-    // rider: req.user._id,
+    model,
+    year,
+    engine: { type, power },
+    vehicleImage,
   })
 
   res.json(newVehicle)

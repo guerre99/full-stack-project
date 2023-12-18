@@ -9,7 +9,7 @@ const userSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   vehicles: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Vehicle' }],
-  // dailyNotification: { type: Boolean, default: false},
+  invitedBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   isAdmin: Boolean,
 })
 
@@ -24,9 +24,13 @@ const User = mongoose.model('User', userSchema)
 
 const userValidationSchema = [
   body('username')
+    .isString()
     .notEmpty()
     .withMessage('El nombre de usuario no puede estar vacío'),
-  body('password').notEmpty().withMessage('La password no puede estar vacía'),
+  body('password')
+    .isString()
+    .notEmpty()
+    .withMessage('La password no puede estar vacía'),
 ]
 
 exports.User = User

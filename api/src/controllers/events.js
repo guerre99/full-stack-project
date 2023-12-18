@@ -10,7 +10,7 @@ const getOne = async (req, res) => {
 
   const event = await Event.findById(eventId)
   if (!event) {
-    return res.status(404).json({ message: 'Cliente no encontrado' })
+    return res.status(404).json({ message: 'Evento no encontrado' })
   }
 
   res.json(event)

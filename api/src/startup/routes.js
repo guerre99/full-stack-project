@@ -17,7 +17,7 @@ module.exports = function (app) {
   app.use(json())
   app.use(morgan('tiny'))
 
-  // app.use('/api/users', require('../routes/users'))
+  app.use('/api/users', require('../routes/users'))
   app.use('/api/events', require('../routes/events'))
   app.use('/api/vehicles', require('../routes/vehicles'))
 
