@@ -5,15 +5,15 @@ const { commonValidationSchema } = require('../models/event')
 const validateParamId = require('../utils/validateParamId')
 
 const validate = require('../middlewares/validate')
-// const auth = require('../middlewares/auth')
-// const admin = require('../middlewares/admin')
+const auth = require('../middlewares/auth')
+const admin = require('../middlewares/admin')
 
 const router = Router()
 
-router.get('/', /* auth, */ eventController.getAll)
+router.get('/', auth, eventController.getAll)
 router.get(
   '/:eventId',
-  // auth,
+  auth,
   validateParamId('eventId'),
   validate,
   eventController.getOne
@@ -21,14 +21,25 @@ router.get(
 
 router.post(
   '/',
-  // [auth, admin],
+  [auth, admin],
   commonValidationSchema,
   validate,
   eventController.create
 )
 
 router.put(
-  '/:eventId',
+  '/addParticipant/:eventId',
+  auth,
+  validateParamId('eventId'),
+  commonValidationSchema,
+  validate,
+  eventController.updateParticipants
+)
+
+router.put(
+  '/editEvent/:eventId',
+  auth,
+  admin,
   validateParamId('eventId'),
   commonValidationSchema,
   validate,
@@ -37,6 +48,8 @@ router.put(
 
 router.delete(
   '/:eventId',
+  auth,
+  admin,
   validateParamId('eventId'),
   validate,
   eventController.deleteOne

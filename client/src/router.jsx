@@ -5,13 +5,14 @@ import {
 
 import RootLayout from 'layouts/RootLayout'
 import ErrorPage from 'pages/ErrorPage'
+import TemplatePage from './pages/TemplatePage'
 import CustomersPage from './pages/CustomersPage'
-import AddCustomerPage from './pages/AddCustomerPage'
-import EditCustomerPage from './pages/EditCustomerPage'
-import LoginPage from './pages/LoginPage'
-import LogoutPage from './pages/LogoutPage'
-import RegisterPage from './pages/RegisterPage'
-import ProtectedRoute from './utils/ProtectedRoute'
+// import AddCustomerPage from './pages/AddCustomerPage'
+// import EditCustomerPage from './pages/EditCustomerPage'
+// import LoginPage from './pages/LoginPage'
+// import LogoutPage from './pages/LogoutPage'
+// import RegisterPage from './pages/RegisterPage'
+// import ProtectedRoute from './utils/ProtectedRoute'
 
 const WorkdaysPage = () => <h1>Babieca</h1>
 
@@ -23,8 +24,9 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element:
-          /*  <ProtectedRoute page={WorkdaysPage} role="auth" />, */ null,
+        element: (
+          /*  <ProtectedRoute page={WorkdaysPage} role="auth" />, */ <CustomersPage />
+        ),
       },
       {
         path: '/customers',

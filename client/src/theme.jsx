@@ -13,8 +13,11 @@ const theme = createTheme({
     secondary: {
       main: '#2a3f92',
     },
+    terciary: {
+      main: '#48cae4',
+    },
     error: {
-      main: '#fd9334',
+      main: '#d00000',
     },
     warning: {
       main: '#ba181b',

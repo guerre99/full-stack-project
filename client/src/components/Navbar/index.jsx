@@ -28,7 +28,8 @@ function Navbar() {
   const handleOpenUserMenu = (event) => setAnchorElUser(event.currentTarget)
 
   const optionsMainMenu = /* user.admin ? */ [
-    { label: 'Customers', to: '/' },
+    { label: 'Eventos', to: '/' },
+    { label: 'Mis vehículos', to: '/' },
   ] /* : [] */
 
   const optionsUserMenu = user.auth
@@ -43,7 +44,6 @@ function Navbar() {
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Brand />
-
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"

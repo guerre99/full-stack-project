@@ -36,6 +36,21 @@ const update = async (req, res) => {
   res.json(updatedEvent)
 }
 
+const updateParticipants = async (req, res) => {
+  const { eventId } = req.params
+  const updates = { participants: req.body.participants }
+
+  const updatedEvent = await Event.findByIdAndUpdate(eventId, updates, {
+    new: true,
+  })
+
+  if (!updatedEvent) {
+    return res.status(404).json({ message: 'Evento no encontrado' })
+  }
+
+  res.json(updatedEvent)
+}
+
 const deleteOne = async (req, res) => {
   const { eventId } = req.params
   const deletedEvent = await Event.findByIdAndDelete(eventId)
@@ -46,4 +61,11 @@ const deleteOne = async (req, res) => {
   res.json(deletedEvent)
 }
 
-module.exports = { getAll, getOne, create, update, deleteOne }
+module.exports = {
+  getAll,
+  getOne,
+  create,
+  update,
+  updateParticipants,
+  deleteOne,
+}

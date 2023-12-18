@@ -56,7 +56,34 @@ const login = async (req, res) => {
   res.json({ message: 'Usuario logueado' })
 }
 
-const updateUser = async (req, res) => {}
+const getAll = async (req, res) => {
+  const users = await User.find()
+  res.json(users)
+}
+
+const getOne = async (req, res) => {
+  const { userId } = req.params
+
+  const user = await User.findById(userId)
+  if (!user) {
+    return res.status(404).json({ message: 'Usuario no encontrado' })
+  }
+  res.json(user)
+}
+
+const updateUser = async (req, res) => {
+  const userId = req.user._id
+  const updates = { ...req.body }
+  const oldUser = await User.findByIdAndUpdate(userId, updates, {
+    new: true,
+  })
+  if (!oldUser) {
+    return res.status(404).json({ message: 'User no encontrado' })
+  }
+  const updatedEvent = { userId, ...updates }
+
+  res.json(updatedEvent)
+}
 
 const deleteUser = async (req, res) => {
   const { userId } = req.params
@@ -64,6 +91,7 @@ const deleteUser = async (req, res) => {
   if (!deletedUser) {
     return res.status(404).json({ message: 'Usuario no encontrado' })
   }
+  res.json(deletedUser)
 }
 
-module.exports = { register, login, deleteUser }
+module.exports = { getAll, register, login, getOne, updateUser, deleteUser }

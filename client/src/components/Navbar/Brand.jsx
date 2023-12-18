@@ -1,30 +1,29 @@
-import { NavLink } from "react-router-dom";
-import { Typography } from "@mui/material";
+import { NavLink } from 'react-router-dom'
+import { Typography } from '@mui/material'
 
-import DirectionsBikeIcon from "@mui/icons-material/DirectionsBike";
-
+import DriveEtaIcon from '@mui/icons-material/DriveEta'
 function Brand() {
   return (
     <>
-      <DirectionsBikeIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
+      {/* <DriveEtaIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
       <Typography
-        variant="h6"
+        variant="h5"
         noWrap
         component={NavLink}
         sx={{
           mr: 2,
 
-          display: { xs: "none", md: "flex" },
-          fontFamily: "monospace",
+          display: { xs: 'none', md: 'flex' },
+          fontFamily: 'monospace',
           fontWeight: 700,
-          letterSpacing: ".1rem",
-          color: "inherit",
-          textDecoration: "none",
+          letterSpacing: '.1rem',
+          color: 'inherit',
+          textDecoration: 'none',
         }}
       >
-        RIDERS
+        BABIECA
       </Typography>
     </>
-  );
+  )
 }
-export default Brand;
+export default Brand

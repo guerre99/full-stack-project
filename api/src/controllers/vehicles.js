@@ -1,13 +1,15 @@
 const { Vehicle } = require('../models/vehicle')
+const { User } = require('../models/user')
 
 const getAll = async (req, res) => {
-  const vehicles = await Vehicle.find({ rider: req.user._id })
+  const user = await User.findById(req.user._id).populate('vehicles')
+  const vehicles = user.vehicles
   res.json(vehicles)
 }
 
 const getOne = async (req, res) => {
   const { vehicleId } = req.params
-  const vehicle = await Vehicle.findById(vehicleId).populate('visits')
+  const vehicle = await Vehicle.findById(vehicleId)
   if (!vehicle) {
     return res.status(404).json({ message: 'Vehiculo no encontrado' })
   }
@@ -23,6 +25,12 @@ const create = async (req, res) => {
     engine: { type, power },
     vehicleImage,
   })
+  const userId = req.user._id
+  const updateUser = await User.findByIdAndUpdate(
+    userId,
+    { $push: { vehicles: newVehicle } },
+    { new: true }
+  )
 
   res.json(newVehicle)
 }

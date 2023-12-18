@@ -8,7 +8,7 @@ const admin = require('../middlewares/admin')
 
 const router = Router()
 
-router.get('/', /* auth, */ vehicleController.getAll)
+router.get('/', auth, vehicleController.getAll)
 
 router.get(
   '/:vehicleId',
@@ -19,7 +19,7 @@ router.get(
 
 router.post(
   '/',
-  // auth,
+  auth,
   vehicleValidationSchema,
   validate,
   vehicleController.create

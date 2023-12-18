@@ -6,7 +6,7 @@ const vehicleSchema = new mongoose.Schema({
   year: { type: Number, required: true },
   engine: {
     type: { type: String, required: true },
-    Power: { type: Number, required: true },
+    power: { type: String, required: true },
   },
   vehicleImage: { type: String },
 })
@@ -14,11 +14,17 @@ const vehicleSchema = new mongoose.Schema({
 const Vehicle = mongoose.model('Vehicle', vehicleSchema)
 
 const vehicleValidationSchema = [
-  body('date')
-    .isISO8601()
-    .toDate()
-    .withMessage('La fecha de jornada no es válida'),
-  body('visits.*').isMongoId().withMessage('ID de cliente no válido'),
+  body('model').isString().notEmpty().withMessage('El modelo es obligatorio'),
+  body('year').isNumeric().notEmpty().withMessage('El año es obligatorio'),
+  body('engine').isObject().notEmpty().withMessage('El motor es obligatorio'),
+  body('engine.type')
+    .isString()
+    .notEmpty()
+    .withMessage('El tipo de motor es obligatorio'),
+  body('engine.power')
+    .isString()
+    .notEmpty()
+    .withMessage('La potencia del motor es obligatoria'),
 ]
 
 exports.Vehicle = Vehicle
