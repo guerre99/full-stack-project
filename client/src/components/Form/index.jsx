@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form'
 
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useEffect } from 'react'
-
+import _ from 'lodash'
 import * as fields from './input-fields'
 
 function Form({
@@ -46,7 +46,7 @@ function Form({
           <Input
             key={name}
             type={type}
-            errors={errors[name]}
+            errors={_.get(errors, name)}
             inputRef={ref}
             {...registerProps}
             {...rest}

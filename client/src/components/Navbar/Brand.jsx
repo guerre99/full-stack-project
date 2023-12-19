@@ -5,7 +5,7 @@ import DriveEtaIcon from '@mui/icons-material/DriveEta'
 function Brand() {
   return (
     <>
-      {/* <DriveEtaIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
+      <DriveEtaIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
       <Typography
         variant="h5"
         noWrap

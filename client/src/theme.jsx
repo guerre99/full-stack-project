@@ -36,7 +36,7 @@ const theme = createTheme({
 
 const ThemeProvider = ({ children }) => (
   <MUIThemeProvider theme={theme}>
-    <GlobalStyles styles={{ body: { backgroundColor: '#EFF1F7' } }} />
+    <GlobalStyles styles={{ body: { backgroundColor: '#FFB4CB' } }} />
 
     {children}
   </MUIThemeProvider>

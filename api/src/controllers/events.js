@@ -40,9 +40,13 @@ const updateParticipants = async (req, res) => {
   const { eventId } = req.params
   const updates = { participants: req.body.participants }
 
-  const updatedEvent = await Event.findByIdAndUpdate(eventId, updates, {
-    new: true,
-  })
+  const updatedEvent = await Event.findByIdAndUpdate(
+    eventId,
+    { $push: updates },
+    {
+      new: true,
+    }
+  )
 
   if (!updatedEvent) {
     return res.status(404).json({ message: 'Evento no encontrado' })

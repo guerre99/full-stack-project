@@ -8,6 +8,7 @@ const input = ({ name, errors, ...rest }) => {
       variant="outlined"
       error={Boolean(errors)}
       helperText={errors?.message}
+      inputProps={{ sx: { backgroundColor: '#ffffff' } }}
       {...rest}
     />
   )

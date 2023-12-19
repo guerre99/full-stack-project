@@ -6,7 +6,7 @@ function create(endpoint) {
     getById: (id) => apiClient.get(`${endpoint}/${id}`),
     create: (entity) => apiClient.post(endpoint, entity),
     update: (id, entity) => apiClient.put(`${endpoint}/${id}`, entity),
-    delete: (id) => apiClient.put(`${endpoint}/${id}`),
+    delete: (id) => apiClient.delete(`${endpoint}/${id}`),
   }
 
   return httpService

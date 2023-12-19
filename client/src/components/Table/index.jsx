@@ -72,7 +72,7 @@ function Table({ columns, rows, onEdit, onDelete }) {
                           Editar
                         </Button>
                       )}
-                      {onDelete && (
+                      {!row.isAdmin && onDelete ? (
                         <Button
                           variant="contained"
                           color="error"
@@ -82,6 +82,8 @@ function Table({ columns, rows, onEdit, onDelete }) {
                         >
                           Eliminar
                         </Button>
+                      ) : (
+                        'Administrador'
                       )}
                     </Stack>
                   </TableCell>

@@ -10,7 +10,7 @@ const userSchema = new mongoose.Schema({
   password: { type: String, required: true },
   vehicles: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Vehicle' }],
   invitedBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-  isAdmin: Boolean,
+  isAdmin: { type: Boolean, default: false },
 })
 
 userSchema.methods.generateJWT = function () {

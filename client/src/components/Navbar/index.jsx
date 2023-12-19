@@ -27,10 +27,18 @@ function Navbar() {
   const handleOpenNavMenu = (event) => setAnchorElNav(event.currentTarget)
   const handleOpenUserMenu = (event) => setAnchorElUser(event.currentTarget)
 
-  const optionsMainMenu = /* user.admin ? */ [
-    { label: 'Eventos', to: '/' },
-    { label: 'Mis vehículos', to: '/' },
-  ] /* : [] */
+  const optionsMainMenu = user.auth
+    ? user.admin
+      ? [
+          { label: 'Eventos', to: '/events' },
+          { label: 'Mis vehículos', to: '/vehicles' },
+          { label: 'Usuarios', to: '/users' },
+        ]
+      : [
+          { label: 'Eventos', to: '/events' },
+          { label: 'Mis vehículos', to: '/vehicles' },
+        ]
+    : []
 
   const optionsUserMenu = user.auth
     ? [{ label: 'Logout', to: '/logout' }]

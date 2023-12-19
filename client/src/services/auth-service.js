@@ -5,7 +5,7 @@ const getEndpoint = (slug) => '/users' + slug
 const tokenKey = 'token'
 
 const login = async (user) => {
-  const endpoint = getEndpoint('/signin')
+  const endpoint = getEndpoint('/login')
 
   const response = await apiClient.post(endpoint, user)
 
@@ -19,7 +19,7 @@ const login = async (user) => {
 }
 
 const register = async (user) => {
-  const endpoint = getEndpoint('/signup')
+  const endpoint = getEndpoint('/register')
 
   const response = await apiClient.post(endpoint, user)
 

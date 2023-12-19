@@ -6,13 +6,17 @@ import {
 import RootLayout from 'layouts/RootLayout'
 import ErrorPage from 'pages/ErrorPage'
 import TemplatePage from './pages/TemplatePage'
-import CustomersPage from './pages/CustomersPage'
-// import AddCustomerPage from './pages/AddCustomerPage'
+import EventsPage from './pages/EventsPage'
+import AddEventPage from './pages/AddEventPage'
 // import EditCustomerPage from './pages/EditCustomerPage'
-// import LoginPage from './pages/LoginPage'
-// import LogoutPage from './pages/LogoutPage'
-// import RegisterPage from './pages/RegisterPage'
-// import ProtectedRoute from './utils/ProtectedRoute'
+import LoginPage from './pages/LoginPage'
+import LogoutPage from './pages/LogoutPage'
+import RegisterPage from './pages/RegisterPage'
+import ProtectedRoute from './utils/ProtectedRoute'
+import VehiclesPage from './pages/VehiclesPage'
+import EditVehiclePage from './pages/EditVehiclePage'
+import NewVehiclePage from './pages/NewVehiclePage'
+import UsersPage from './pages/UsersPage'
 
 const WorkdaysPage = () => <h1>Babieca</h1>
 
@@ -24,38 +28,48 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: (
-          /*  <ProtectedRoute page={WorkdaysPage} role="auth" />, */ <CustomersPage />
-        ),
+        element: <ProtectedRoute page={EventsPage} role="auth" />,
       },
       {
-        path: '/customers',
-        element:
-          null /* <ProtectedRoute page={CustomersPage} role="admin" />, */,
+        path: '/events',
+        element: <ProtectedRoute page={EventsPage} role="auth" />,
       },
       {
-        path: '/customer/new',
-        element:
-          /* <ProtectedRoute page={AddCustomerPage} role="admin" /> */ null,
+        path: '/event/new',
+        element: <ProtectedRoute page={AddEventPage} role="admin" />,
       },
       {
-        path: '/customer/edit/:customerId',
+        path: '/event/edit/:customerId',
         element:
           /* <ProtectedRoute page={EditCustomerPage} role="admin" /> */ null,
       },
       {
+        path: '/vehicles',
+        element: <ProtectedRoute page={VehiclesPage} role="auth" />,
+      },
+      {
+        path: '/vehicle/new',
+        element: <ProtectedRoute page={NewVehiclePage} role="auth" />,
+      },
+      {
+        path: '/vehicle/edit/:vehicleId',
+        element: <ProtectedRoute page={EditVehiclePage} role="auth" />,
+      },
+      {
+        path: '/users',
+        element: <ProtectedRoute page={UsersPage} role="admin" />,
+      },
+      {
         path: '/login',
-        element:
-          /* <ProtectedRoute page={LoginPage} role="anonymous" />, */ null,
+        element: <ProtectedRoute page={LoginPage} role="anonymous" />,
       },
       {
         path: '/register',
-        element:
-          /* <ProtectedRoute page={RegisterPage} role="anonymous" />, */ null,
+        element: <ProtectedRoute page={RegisterPage} role="anonymous" />,
       },
       {
         path: '/logout',
-        element: /* <ProtectedRoute page={LogoutPage} role="auth" />, */ null,
+        element: <ProtectedRoute page={LogoutPage} role="auth" />,
       },
     ],
   },

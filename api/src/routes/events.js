@@ -28,16 +28,15 @@ router.post(
 )
 
 router.put(
-  '/addParticipant/:eventId',
+  '/:eventId/addParticipant',
   auth,
   validateParamId('eventId'),
-  commonValidationSchema,
   validate,
   eventController.updateParticipants
 )
 
 router.put(
-  '/editEvent/:eventId',
+  '/:eventId',
   auth,
   admin,
   validateParamId('eventId'),
