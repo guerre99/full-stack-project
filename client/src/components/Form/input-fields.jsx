@@ -25,6 +25,9 @@ const select = ({ name, errors, options, placeholder, ...rest }) => {
       helperText={errors?.message}
       defaultValue="none"
       SelectProps={{ native: true }}
+      inputProps={{
+        sx: { backgroundColor: '#ffffff', borderRadius: '10px' },
+      }}
       {...rest}
     >
       <option value="none">{placeholder}</option>

@@ -64,7 +64,7 @@ const getAll = async (req, res) => {
 const getOne = async (req, res) => {
   const { userId } = req.params
 
-  const user = await User.findById(userId)
+  const user = await User.findById(userId).populate('vehicles')
   if (!user) {
     return res.status(404).json({ message: 'Usuario no encontrado' })
   }

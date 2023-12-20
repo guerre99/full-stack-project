@@ -20,8 +20,10 @@ function EventsPage() {
   const [searchTerm, setSearchTerm] = useState('')
   const navigate = useNavigate()
 
-  const handleEdit = ({ _id: EventIdToEdit }) =>
+  const handleDetail = ({ _id: EventIdToEdit }) =>
     navigate('/events/' + EventIdToEdit)
+  const handleEdit = ({ _id: EventIdToEdit }) =>
+    navigate('/event/edit/' + EventIdToEdit)
   const handleDelete = ({ _id: EventIdToDelete }) =>
     eventService
       .delete(EventIdToDelete)
@@ -85,6 +87,7 @@ function EventsPage() {
             key={event._id}
             onEdit={handleEdit}
             onDelete={handleDelete}
+            onDetail={handleDetail}
             event={event}
           />
         ))}

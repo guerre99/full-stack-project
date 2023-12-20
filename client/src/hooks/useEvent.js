@@ -3,8 +3,8 @@ import eventService from 'src/services/event-service'
 
 function useEvent(eventId) {
   const [event, setEvent] = useState({})
-  const [loading, setLoading] = useState(true)
-  const [errors, setErrors] = useState(null)
+  const [loadingEvent, setLoading] = useState(true)
+  const [errorsEvent, setErrors] = useState(null)
 
   useEffect(() => {
     eventService
@@ -14,7 +14,7 @@ function useEvent(eventId) {
       .finally(() => setLoading(false))
   }, [])
 
-  return { event, loading, errors }
+  return { event, loadingEvent, errorsEvent }
 }
 
 export default useEvent

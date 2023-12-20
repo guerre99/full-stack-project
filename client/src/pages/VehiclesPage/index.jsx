@@ -15,7 +15,6 @@ import vehicleService from 'src/services/vehicle-service'
 
 function VehiclesPage() {
   const { vehicles, loading, errors, setVehicles } = useVehicles()
-  console.log(vehicles)
   const [searchTerm, setSearchTerm] = useState('')
   const navigate = useNavigate()
 

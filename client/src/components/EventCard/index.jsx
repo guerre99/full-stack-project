@@ -4,7 +4,7 @@ import DeleteIcon from '@mui/icons-material/Delete'
 import { Dialog } from 'components'
 import { useState } from 'react'
 
-function EventCard({ event, onEdit, onDelete }) {
+function EventCard({ event, onEdit, onDelete, onDetail }) {
   const { city, date } = event
   let fecha = new Date(date)
   let dia = fecha.getDate()
@@ -28,6 +28,10 @@ function EventCard({ event, onEdit, onDelete }) {
 
   const handleEdit = (row) => {
     onEdit(row)
+  }
+
+  const handleDetail = (row) => {
+    onDetail(row)
   }
   return (
     <>
@@ -58,7 +62,11 @@ function EventCard({ event, onEdit, onDelete }) {
               >
                 <DeleteIcon />
               </Button>
-              <Button variant="contained" color="terciary">
+              <Button
+                variant="contained"
+                color="terciary"
+                onClick={() => handleDetail(event)}
+              >
                 Ver más...
               </Button>
             </Stack>

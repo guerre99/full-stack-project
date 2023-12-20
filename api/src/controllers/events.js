@@ -8,7 +8,7 @@ const getAll = async (req, res) => {
 const getOne = async (req, res) => {
   const { eventId } = req.params
 
-  const event = await Event.findById(eventId)
+  const event = await Event.findById(eventId).populate('participants')
   if (!event) {
     return res.status(404).json({ message: 'Evento no encontrado' })
   }

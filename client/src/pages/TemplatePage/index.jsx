@@ -2,6 +2,7 @@ import * as React from 'react'
 import { Link } from 'react-router-dom'
 import { Button, Stack, Typography, CircularProgress } from '@mui/material'
 import { Add } from '@mui/icons-material'
+import { Map } from 'components'
 
 function TemplatePage() {
   return (
@@ -21,8 +22,7 @@ function TemplatePage() {
           New Entity
         </Button>
       </Stack>
-
-      <p>Entity List</p>
+      <Map />
     </Stack>
   )
 }

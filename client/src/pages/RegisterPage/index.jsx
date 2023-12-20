@@ -22,11 +22,11 @@ function RegisterPage() {
   const onSubmit = (user) => {
     register(user)
       .then((decodedJWT) => {
-        const { username, isAdmin } = decodedJWT
+        const { username, isAdmin, _id } = decodedJWT
 
         const type = isAdmin ? 'admin' : 'login'
 
-        dispatch({ type, username })
+        dispatch({ type, username, _id })
         navigate('/', {})
       })
       .catch((err) => {

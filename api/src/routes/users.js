@@ -12,7 +12,7 @@ const router = Router()
 
 router.get('/', auth, admin, userController.getAll)
 
-router.get('/:userId', auth, admin, userController.getOne)
+router.get('/:userId', auth, userController.getOne)
 
 router.post(
   '/register',
