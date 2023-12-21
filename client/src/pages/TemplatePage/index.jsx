@@ -2,9 +2,11 @@ import * as React from 'react'
 import { Link } from 'react-router-dom'
 import { Button, Stack, Typography, CircularProgress } from '@mui/material'
 import { Add } from '@mui/icons-material'
-import { Map } from 'components'
+import { useState } from 'react'
 
 function TemplatePage() {
+  const [selectedLocation, setSelectedLocation] = useState(null)
+  console.log(selectedLocation)
   return (
     <Stack spacing={3}>
       <Stack direction="row" justifyContent="space-between">
@@ -22,7 +24,6 @@ function TemplatePage() {
           New Entity
         </Button>
       </Stack>
-      <Map />
     </Stack>
   )
 }

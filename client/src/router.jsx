@@ -18,6 +18,7 @@ import EditVehiclePage from './pages/EditVehiclePage'
 import NewVehiclePage from './pages/NewVehiclePage'
 import UsersPage from './pages/UsersPage'
 import EventPage from './pages/EventPage'
+import EditEventPage from './pages/EditEventPage'
 
 const WorkdaysPage = () => <h1>Babieca</h1>
 
@@ -45,8 +46,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/event/edit/:eventId',
-        element:
-          /* <ProtectedRoute page={EditCustomerPage} role="admin" /> */ null,
+        element: <ProtectedRoute page={EditEventPage} role="admin" />,
       },
       {
         path: '/vehicles',

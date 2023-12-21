@@ -21,6 +21,7 @@ function EditVehiclePage() {
   const [errorsFromResponse, setErrorsFromResponse] = useState([])
 
   const onSubmit = (vehicle) => {
+    console.log('enviado vehiculo')
     vehicleService
       .update(vehicleId, vehicle)
       .then(() => {})

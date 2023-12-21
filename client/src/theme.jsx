@@ -36,7 +36,20 @@ const theme = createTheme({
 
 const ThemeProvider = ({ children }) => (
   <MUIThemeProvider theme={theme}>
-    <GlobalStyles styles={{ body: { backgroundColor: '#FFB4CB' } }} />
+    <GlobalStyles
+      styles={{
+        body: {
+          background:
+            'hsla(173, 90%, 72%, 1) linear-gradient(360deg, hsla(173, 90%, 72%, 1) 0%, hsla(100, 100%, 31%, 1) 100%)',
+          background:
+            '-moz-linear-gradient(360deg, hsla(173, 90%, 72%, 1) 0%, hsla(100, 100%, 31%, 1) 100%)',
+          background:
+            '-webkit-linear-gradient(360deg, hsla(173, 90%, 72%, 1) 0%, hsla(100, 100%, 31%, 1) 100%)',
+          filter:
+            'progid:DXImageTransform.Microsoft.gradient(startColorstr="#77F8E9", endColorstr="#35A000", GradientType=1)',
+        },
+      }}
+    />
 
     {children}
   </MUIThemeProvider>

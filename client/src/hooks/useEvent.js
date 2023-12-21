@@ -6,15 +6,24 @@ function useEvent(eventId) {
   const [loadingEvent, setLoading] = useState(true)
   const [errorsEvent, setErrors] = useState(null)
 
-  useEffect(() => {
+  const fetchData = () => {
+    setLoading(true)
     eventService
       .getById(eventId)
       .then(({ data }) => setEvent(data))
       .catch((errors) => setErrors(errors))
       .finally(() => setLoading(false))
+  }
+
+  useEffect(() => {
+    fetchData()
   }, [])
 
-  return { event, loadingEvent, errorsEvent }
+  const refetchEvent = () => {
+    fetchData()
+  }
+
+  return { event, loadingEvent, errorsEvent, refetchEvent }
 }
 
 export default useEvent

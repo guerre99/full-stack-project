@@ -15,7 +15,7 @@ const getFields = (vehiculos) => [
 
 const schema = yup
   .object({
-    participant: yup.string().required('Participante obligatorio'),
+    participants: yup.string().required('Participante obligatorio'),
   })
   .required()
 

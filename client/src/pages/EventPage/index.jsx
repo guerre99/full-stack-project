@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
 import { Link, useNavigate } from 'react-router-dom'
@@ -20,29 +20,35 @@ function EventPage() {
   const [{ id }] = useAuth()
   const { user, loading, errors } = useUser(id)
   const { eventId } = useParams()
-  const { event, loadingEvent, errorsEvent } = useEvent(eventId)
+  const { event, loadingEvent, errorsEvent, refetchEvent } = useEvent(eventId)
 
   const [errorsFromResponse, setErrorsFromResponse] = useState([])
-
-  if (loadingEvent) return <CircularProgress />
-  if (loading) return <CircularProgress />
+  const [participantes, setParticipantes] = useState(event.participants || [])
 
   let fecha = new Date(event.date)
   let dia = fecha.getDate()
   let mes = fecha.getMonth()
   let año = fecha.getFullYear()
 
-  const onSubmit = (participant) => {
-    console.log('enviar', participant, event)
+  const onSubmit = (participant, { reset }) => {
     eventService
       .addParticipant(eventId, participant)
-      .then(() => {})
+      .then(() => {
+        reset()
+        refetchEvent()
+      })
       .catch((err) => {
         const { data, status } = err.response
         if (status !== 400) return
         setErrorsFromResponse(data)
       })
   }
+
+  useEffect(() => {
+    setParticipantes(event.participants || [])
+  }, [event.participants])
+
+  if (loadingEvent || loading) return <CircularProgress />
 
   let fields = getFields(
     user?.vehicles?.map((vehicle) => ({
@@ -58,7 +64,7 @@ function EventPage() {
           Evento {event.city} : {dia}-{mes}-{año}
         </Typography>
       </Stack>
-      <Map />
+      <Map event={event} />
       <Form
         inputs={fields}
         onSubmit={onSubmit}

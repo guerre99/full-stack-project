@@ -13,6 +13,11 @@ const fields = [
     name: 'ubication',
     label: 'Ubicación',
   },
+  {
+    name: 'googlemaps',
+    label: 'googlemaps',
+    type: 'GoogleMapsAutoComplete',
+  },
 ]
 
 const schema = yup
